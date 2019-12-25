@@ -1,0 +1,122 @@
+Q1:
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+n=int(input("Input a number to compute the factiorial : "))
+print(factorial(n))
+
+
+
+Q2:
+def string_test(s):
+    d={"UPPER_CASE":0, "LOWER_CASE":0}
+    for c in s:
+        if c.isupper():
+           d["UPPER_CASE"]+=1
+        elif c.islower():
+           d["LOWER_CASE"]+=1
+        else:
+           pass
+    print ("Original String : ", s)
+    print ("No. of Upper case characters : ", d["UPPER_CASE"])
+    print ("No. of Lower case Characters : ", d["LOWER_CASE"])
+
+string_test('Pyhton Cylani CourSe')
+
+
+
+Q3:
+list1 = [10, 21, 22, 4, 45, 1002, 66, 93] 
+
+for num in list1: 
+    if num % 2 == 0: 
+       print(num, end = " ")
+
+
+
+Q4:
+def isPalindrome(string):
+	left_pos = 0
+	right_pos = len(string) - 1
+	
+	while right_pos >= left_pos:
+		if not string[left_pos] == string[right_pos]:
+			return False
+		left_pos += 1
+		right_pos -= 1
+	return True
+print(isPalindrome('maam'))
+
+
+
+Q5:
+def test_prime(n):
+    if (n==1):
+        return False
+    elif (n==2):
+        return True;
+    else:
+        for x in range(2,n):
+            if(n % x==0):
+                return False
+        return True             
+print(test_prime(13))
+
+
+
+Q6:
+while True: 
+	try: 
+		bg = float(input("Enter your budget : ")) 
+		s = bg 
+	except ValueError: 
+		print("PRINT NUMBER AS A AMOUNT") 
+		continue
+	else: 
+		break
+a ={"name":[], "quant":[], "price":[]} 
+b = list(a.values()) 
+na = b[0] 
+qu = b[1] 
+pr = b[2] 
+while True: 
+	try: 
+		ch = int(input("1.ADD\n2.EXIT\nEnter your choice : ")) 
+	except ValueError: 
+		print("\nERROR: Choose only digits from the given option") 
+		continue
+	else: 
+		if ch == 1 and s>0:				 
+			pn = input("Enter product name : ") 
+			q = input("Enter quantity : ") 
+			p = float(input("Enter price of the product : ")) 
+			if p>s: 
+				print("\nCAN, T BUT THE PRODUCT") 
+				continue
+			else:
+				if pn in na: 
+					ind = na.index(pn) 
+					qu.remove(qu[ind]) 
+					pr.remove(pr[ind]) 
+					qu.insert(ind, q) 
+					pr.insert(ind, p)
+					s = bg-sum(pr) 
+					print("\namount left", s) 
+				else: 
+					na.append(pn) 
+					qu.append(q)
+					pr.append(p)
+					s = bg-sum(pr) 
+					print("\namount left", s) 
+		elif s<= 0: 
+			print("\nNO BUDGET") 
+		else: 
+			break
+print("\nAmount left : Rs.", s) 
+if s in pr:  
+	print("\nAmount left can buy you a", na[pr.index(s)]) 
+print("\n\n\nGROCERY LIST")
+for i in range(len(na)): 
+	print(na[i], qu[i], pr[i]) 
